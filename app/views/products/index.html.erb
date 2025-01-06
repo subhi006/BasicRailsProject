@@ -13,3 +13,17 @@
   <% end %>
 </div>
 
+
+<h1>Products</h1>
+<div>
+  <% @products.each do |product| %>
+    <%= render @product%>
+    <%end%>
+<div>
+
+<h1>Products</h1>
+<div>
+  <% @products.each do |product| %>
+    <%= render partial: "product", locals: {product: product} %>
+    <%end%>
+<div>

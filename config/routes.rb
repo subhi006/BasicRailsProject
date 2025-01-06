@@ -9,16 +9,38 @@ Rails.application.routes.draw do
 
   # get 'products/login', to: 'products#login', as: 'products_login'
 
-  resources :products 
+  resources :products, :books
   
   post 'products/login', to: 'products#login', as: 'products_login' 
+  
+  #  esource :costomers
 
-  resources :costomers 
+  #  namespace :admin do
+  #   resources :articles 
+  #  end
+  
+  #creating a scope 
+  # scope module: "admin" do
+  #   resources :articles
+  # end
 
-  resources :books
+
+  # resources :costomers do 
+  #   resources :products
+  # end
 
 
+  # resources :articles do
+  #   resources :comments, only: [:index, :new, :create]
+  # end
+  # resources :comments, only: [:show, :edit, :update, :destroy]
+  
 
+  resources :articles do 
+    resources :comments, shallow:true
+  end
+  
+  
 
 
 

@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
   #    end
   # end
 
-  private
+  # private
 
-  def current_product
-      @current_product ||= user.find_by(id: session[:current_product_id]) if session[:current_product_id]
-  end
+  # def current_product
+  #     @current_product ||= user.find_by(id: session[:current_product_id]) if session[:current_product_id]
+  # end
 
 end

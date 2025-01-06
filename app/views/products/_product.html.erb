@@ -1,0 +1,6 @@
+<!-- app/views/products/_product.html.erb -->
+<div class="product">
+  <h3><%= product.name %></h3>
+  <p><%= number_to_currency(product.created_at) %></p>
+  <%= link_to 'View Product', product%>
+</div>
