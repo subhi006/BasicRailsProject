@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_06_084359) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_09_055409) do
+  create_table "addresses", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.string "kind"
+    t.string "street"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
+  end
+
   create_table "book_orders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,13 +37,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_06_084359) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "costomers", force: :cascade do |t|
-    t.string "address"
-    t.integer "number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -43,14 +45,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_06_084359) do
     t.string "address"
   end
 
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "stock_quantity"
-    t.integer "costomer_id"
-    t.index ["costomer_id"], name: "index_products_on_costomer_id"
   end
 
-  add_foreign_key "products", "costomers"
+  add_foreign_key "addresses", "people"
 end

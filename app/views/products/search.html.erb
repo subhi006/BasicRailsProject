@@ -1,0 +1,16 @@
+
+<!-- app/views/products/search.html.erb -->
+<h1>Search Results</h1>
+<% if @products[:product].present? %>
+  <ul>
+    <% @products[:product].each do |product| %>
+    <%debugger%>
+      <li><%= product.name %></li>
+    <% end %>
+  </ul>
+    <ul>
+        <li><%=@products[:behave]%></li>
+    </ul>
+<% else %>
+  <p>No products found for "<%= @query %>"</p>
+<% end %>

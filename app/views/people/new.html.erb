@@ -1,0 +1,17 @@
+<%= form_with model: @person do |form| %>
+  <%=form.label :name%>
+  <%=form.text_field :name%><br>
+  Addresses:
+  <ul>
+    <%= form.fields_for :addresses do |addresses_form| %>
+      <li>
+        <%= addresses_form.label :kind %>
+        <%= addresses_form.text_field :kind %>
+
+        <%= addresses_form.label :street %>
+        <%= addresses_form.text_field :street %>
+      </li>
+    <% end %>
+  </ul>
+  <%=form.submit%>
+<% end %>

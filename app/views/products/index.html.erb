@@ -1,10 +1,8 @@
 
 
-
-<h1>Products</h1>
-
-<%= link_to "New product", new_product_path %>
-
+<%= tag.h1 " All Products" %>
+<%= link_to "Create New Product", new_product_path %>
+<br>
 <div id="products">
   <% @products.each do |product| %>
     <div>
@@ -13,17 +11,37 @@
   <% end %>
 </div>
 
+<%= form_with url: "products/search", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.search_field :query %>
+  <%= form.submit "Search" %>
+ 
+  <%= form.checkbox :biography %>
+  <%= form.label :biography, "Biography" %>
+  <%= form.checkbox :romance %>
+  <%= form.label :romance, "Romance" %>
+  <%= form.checkbox :mystery %>
+  <%= form.label :mystery, "Mystery" %>
 
-<h1>Products</h1>
-<div>
-  <% @products.each do |product| %>
-    <%= render @product%>
-    <%end%>
-<div>
+  <%=form.radio_button :flavor, "chocolate_chip"%>
+  <%=form.label :flavor_chocolate_chip, "Chocolate Chip"%>
+  <%=form.radio_button :flavor, "vanilla"%>
+  <%=form.label :flavor_vanilla, "Vanilla"%>
 
-<h1>Products</h1>
-<div>
-  <% @products.each do |product| %>
-    <%= render partial: "product", locals: {product: product} %>
-    <%end%>
-<div>
+  <%= form.date_field :born_on %>
+  <%= form.time_field :started_at %>
+   <%= form.datetime_local_field :graduation_day %>
+   <%= form.month_field :birthday_month %>
+  <%= form.week_field :birthday_week %>
+
+<% end %>
+
+
+<%# <h1>Products</h1>
+<div> <
+ <%# <% @products.each do |product| %> 
+   <%# <%= render partial: "product", locals: {product: product} %> 
+   <%# <%end%> 
+<div> 
+
+
